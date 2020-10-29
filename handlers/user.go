@@ -14,9 +14,9 @@ func GETHandler(w http.ResponseWriter, r *http.Request) {
 	var person models.Person
 	row := db.QueryRow("SELECT user_id, first_name, last_name FROM person where user_id = $1", userID)
 	err := row.Scan(
+		&person.UserID,
 		&person.FirstName,
 		&person.LastName,
-		&person.UserID,
 	)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
