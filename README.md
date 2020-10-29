@@ -22,7 +22,8 @@ Structure must be like:
       "address": "Miami Beach, Local street 2"
     }
   ]
-} ```
+ } 
+ ```
 
 GET: /get
 To get user by id you should in header put:
