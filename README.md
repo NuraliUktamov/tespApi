@@ -30,5 +30,4 @@ GET: ```/get```
 
 To get user by id you should in header put:
 
-```X-User-Id: {user_id}
-```
+```X-User-Id: {user_id}```
