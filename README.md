@@ -11,17 +11,20 @@ POST: /insert
 
 Structure must be like:
 
-${
-$  "first_name": "John",
- $ "last_name": "Doyle",
- $ "addresses": [
-  $  {
-  $    "address": "Miami Beach, Local street 1"
-  $  },
-  $  {
-  $    "address": "Miami Beach, Local street 2"
-  $  }
-  $]
-$}
+```{
+  "first_name": "John",
+  "last_name": "Doyle",
+  "addresses": [
+    {
+      "address": "Miami Beach, Local street 1"
+    },
+    {
+      "address": "Miami Beach, Local street 2"
+    }
+  ]
+}```
 
 GET: /get
+To get user by id you should in header put:
+
+```X-User-Id: {user_id}```
