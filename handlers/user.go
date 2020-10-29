@@ -3,14 +3,15 @@ import (
 	"encoding/json"
 	"github.com/google/uuid"
 	"github.com/testApi/config"
+	"github.com/testApi/models"
 	"net/http"
 )
 
 // GETHandler ...
 func GETHandler(w http.ResponseWriter, r *http.Request) {
 	userID := r.Header.Get("X-User-Id")
-	db := OpenConnection()
-	var person Person
+	db := config.OpenConnection()
+	var person models.Person
 	row := db.QueryRow("SELECT user_id, first_name, last_name FROM person where user_id = $1", userID)
 	err := row.Scan(
 		&person.FirstName,
@@ -26,7 +27,7 @@ func GETHandler(w http.ResponseWriter, r *http.Request) {
 			SELECT address from person_addresses where user_id = $1`, userID,
 	)
 	for rows.Next() {
-		var address Address
+		var address models.Address
 
 		err = rows.Scan(
 			&address.Address,
@@ -54,9 +55,9 @@ func GETHandler(w http.ResponseWriter, r *http.Request) {
 
 // POSTHandler ...
 func POSTHandler(w http.ResponseWriter, r *http.Request) {
-	db := OpenConnection()
+	db := config.OpenConnection()
 
-	var p Person
+	var p models.Person
 	err := json.NewDecoder(r.Body).Decode(&p)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
