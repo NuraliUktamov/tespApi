@@ -7,9 +7,7 @@ To run the project in _development mode_:
     $ go run cmd/main.go
 
 Here is two endpoints:
-POST: 
-```/insert
-```
+POST: ```/insert```
 
 Structure must be like:
 
@@ -28,8 +26,8 @@ Structure must be like:
  } 
  ```
 
-GET: ```/get
-```
+GET: ```/get```
+
 To get user by id you should in header put:
 
 ```X-User-Id: {user_id}
